@@ -79,8 +79,11 @@ module.exports = {
     create_track: function (times, start_time, lunch_time, min_end_time, max_end_time){             // function to create a track.                                       
         var track =[];                
         track = track.concat(this.build_track(times, start_time, lunch_time, lunch_time));          // we create the morning session first - 
+        times = this.remove_times(times, track); 
         track = track.concat(new Array({"time":60,"talk":"Lunch"}));                                // and now we add the lunch session
+        times = this.remove_times(times, track); 
         track = track.concat(this.build_track(times, lunch_time+1, min_end_time, max_end_time));    // finally, we add the lunch hour and work on the afternoon session. 
+        times = this.remove_times(times, track); 
         return track;
     }
 }
