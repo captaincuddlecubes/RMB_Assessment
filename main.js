@@ -20,16 +20,17 @@ var times = fs.readFileSync("input.txt")    // we read in the file
 console.log("\nTrack 1: \n");               // we post this to the screen.
 var running_time = start_time*60;           // we start the running time
 var track_1 = functions.create_track(times, start_time, lunch_time, min_end_time, max_end_time);        // creating track 1
+times = functions.remove_times(times, track_1);        // creating track 1
 track_1.forEach(function(value){            // now we run through the JSON object we created - and add up all the values.
     console.log(functions.twelve_hour_clock(running_time)+" "+value.talk);
     running_time+=value.time;               // increasing the timmer 
 });
 console.log(functions.twelve_hour_clock(17*60)+" "+"Networking\n\n"); // we print the Networking session -> 17 hundred hours * 60 to get minutes
 
-
 console.log("Track 2: \n");                 // now we need to do the Track 2 session.
 running_time = start_time*60;               // reseting the running time
 var track_2 = functions.create_track(times, start_time, lunch_time, min_end_time, max_end_time);        // creating track 2 schedule from what is left in the times array.
+times = functions.remove_times(times,track_2);
 track_2.forEach(function(value){            // for each value in track_2
     console.log(functions.twelve_hour_clock(running_time)+" "+value.talk);
     running_time+=value.time;

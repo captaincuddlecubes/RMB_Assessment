@@ -73,8 +73,8 @@ module.exports = {
     build_track :function (times, start_time, finish_after, finish_before) {    // function that builds a track for us.
         var track = [];
         this.find_time_slot(times, track, (finish_after - start_time) * 60, (finish_before - start_time) * 60);  // we want to find the time slots. 
-        times = this.remove_times(times, track);                                // remove the found times
-        return track;                                                           // we return the track that was minted. 
+        //times = this.remove_times(times, track);                                // remove the found times
+        return  track;                                                           // we return the track that was minted. 
     },
     create_track: function (times, start_time, lunch_time, min_end_time, max_end_time){             // function to create a track.                                       
         var track =[];                
